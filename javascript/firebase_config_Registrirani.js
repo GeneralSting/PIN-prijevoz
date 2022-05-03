@@ -1,0 +1,12 @@
+const config = {
+    apiKey: "AIzaSyBbDM_m_ckmCwNsnZlAqo997g4_AqzqWjY",
+    authDomain: "registriranikorisnici.firebaseapp.com",
+    databaseURL: "https://registriranikorisnici-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "registriranikorisnici",
+    storageBucket: "registriranikorisnici.appspot.com",
+    messagingSenderId: "1070128720438",
+    appId: "1:1070128720438:web:66a3e7811d6317a72bc697"
+  };
+    firebase.initializeApp(config);
+    var odbR = firebase.database();
+    var odbR_Registrirani = odbR.ref('Registrirani');

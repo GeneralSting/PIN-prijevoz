@@ -1,0 +1,378 @@
+html 
+{
+    scroll-behavior: smooth;
+    margin: auto;
+    background-color: darkslategray;
+}
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family:sans-serif;
+}   
+.linkZaVijest
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+h1
+{
+    font-size: 50px;
+    font-family:Audiowide;
+}
+p
+{
+    font-size: 24px;
+    line-height: 50px;
+}
+.navbar
+{
+    opacity: 1;
+    position: fixed;
+    display: flex;                           /*display->precizira ponašanje prikaza, flex->prikazuje element kao blok-element flex container (fleksibilnog spremnika)*/
+    justify-content:center;                 /*svojstvo definira kako preglednik prikazuje prostor između i okolo sadržaja, vrijednost prikazuje elemente jedan pokraj drugog prema sjedištu spremnika, poravnavanje prema x osi*/
+    align-items: center;                     /*svojstvo određuje poravanje za stavke unutar fleksibilnog spremnika, vrijednost-> stavke su pozicionirane na centru spremnika*/
+    flex-direction: row;                     /*svojstvo određuje kako će fleksibilne stavke biti postavljenje u fleksibilnom spremniku, definiranje x osi i smijera, vrijednost postavlja stavke u smjeru red, odnosno x osi prema udesno*/
+    flex-wrap: wrap;                         /*svojstvo postavlja hoće li elementi biti prisiljeni da ostanu u jednom redu ili će se moći preći o ostale redove (kod sužimanja ekrana), vrijednost dopušta prijelazak o druge redove*/
+    background-color: #D4D7DE;
+    width: 100%;
+    height: 80px;
+    z-index: 999;                              /*svojsto pozicionira elemente na z-osi odnosno postavlja njihovu dubinu za negativne vrijednosti i površinu za pozitivne vrijednosti, veće vrijednosti poklapaju one s manjom vrijednošću*/
+}
+.logo
+{
+    margin: 10px;
+    margin-bottom: 25px;
+    color: #fff;
+    text-decoration: none;
+    color: rgb(21, 79, 240);
+    flex: 0 0 auto;                          /*kratica flex, svojstvo postavlja kako će element rast il se smanjivat kako bi se uklopio u dostupan flex spremnik, 1. vrijednost-> flex-grow, određuje koliki dio preostalog prostora treba biti dodijeljen elementu. Element raste. 2 vrijednost-> flex-shrink, određuje koliko će se element suziti ovisno o prostoru. Element se smanjuje. 3 vrijednost-> postavlja početnu vrijednost elementa prema kojoj će elementi rasti ili se smanjivati. */
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 35px;
+}
+nav:first-child
+{
+    margin-right: auto;
+}
+.logo:hover
+{
+    text-decoration: none;
+    font-size: 35px;
+}
+.mainMenu{
+    list-style: none;
+    margin-right: 5%;
+}
+nav .mainMenu {
+    display: flex;
+    list-style: none;
+}   
+nav .mainMenu li a 
+{
+    margin: 10px;
+    display: inline-block;
+    padding: 5px;
+    justify-content: space-between;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 1.5rem;
+}
+nav .mainMenu li a:hover 
+{
+    background: #b6bcc9;
+    color: blue;
+}
+.navbar .mainMenu li button
+{
+    margin: 10px;
+    display: inline-block;
+    justify-content: space-between;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 4px 5px;
+    background-color: teal;
+    border: 1px solid #006d;
+    border-radius: 50em;
+    cursor: pointer;
+}
+.navbar .mainMenu li button:hover
+{
+    transition: all 0.25s;
+    background-color: #0f6464;
+    border-color: #032c2c;
+}
+#home
+{
+    background-color: rgb(152, 209, 192);
+}
+.buttonForMore
+{
+    color: white;
+    text-decoration: none;
+    padding: 2px 3px;
+    background: rgb(6, 154, 223);
+    border:1px solid #006d6d;
+    border-radius: 50em;
+}
+.buttonForMore:hover
+{
+    text-decoration: none;
+    color: salmon;
+    transition: all .5s;
+    background: #006d6d;
+    border-color: #005959;
+}
+nav .openMenu 
+{
+    font-size: 2rem;
+    margin: 12px;
+    margin-left: 11%;
+    display: none;
+    cursor: pointer;
+}
+nav .openMenu:hover
+{
+    font-size: 2.2rem;
+    margin-left: 7.65%;
+}
+nav .mainMenu .closeMenu , .icons i 
+{
+    font-size: 2rem;
+    display: none;
+    cursor: pointer;
+}
+.about-area, .port-area, .service-area, .contact-area{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+}
+.about-area h1, .contact-area h1
+{
+    font-family:cursive;
+    display: flex;
+    justify-content: center;
+}
+.text-part
+{
+    width: 65%;
+    height: 80%;
+}        
+.about-area
+{
+    background-color: #09662d4b;
+}
+.port-area
+{
+    background-color: #07461f4b;
+    color: #fff;
+}
+.contact-area
+{
+    background-color: #0333154b;
+    color: #fff;
+}
+
+.fa-facebook:hover {color: rgb(128, 0, 248);}
+.fa-twitter:hover {color: rgb(23, 143, 223);}
+.fa-instagram:hover {color: rgb(255, 0, 191);}
+.fa-github:hover {color: rgb(255, 123, 0);}
+
+@media(max-width: 1080px) {     /*media query*/
+    .logo
+    {
+        text-decoration: none;
+        color: rgb(21, 79, 240);
+        flex: 0 0 auto;                          /*kratica flex, svojstvo postavlja kako će element rast il se smanjivat kako bi se uklopio u dostupan flex spremnik, 1. vrijednost-> flex-grow, određuje koliki dio preostalog prostora treba biti dodijeljen elementu. Element raste. 2 vrijednost-> flex-shrink, određuje koliko će se element suziti ovisno o prostoru. Element se smanjuje. 3 vrijednost-> postavlja početnu vrijednost elementa prema kojoj će elementi rasti ili se smanjivati. */
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        font-size: 35px;
+        margin-right: 3%;
+        margin-left: 20%;
+    }
+    .logo:hover
+    {
+        text-decoration: none;
+        flex: 0 0 auto;                          /*kratica flex, svojstvo postavlja kako će element rast il se smanjivat kako bi se uklopio u dostupan flex spremnik, 1. vrijednost-> flex-grow, određuje koliki dio preostalog prostora treba biti dodijeljen elementu. Element raste. 2 vrijednost-> flex-shrink, određuje koliko će se element suziti ovisno o prostoru. Element se smanjuje. 3 vrijednost-> postavlja početnu vrijednost elementa prema kojoj će elementi rasti ili se smanjivati. */
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        font-size: 35px;
+        margin-right: 3%;
+        margin-left: 20%;
+    }
+    nav .openMenu 
+    {
+        font-size: 2rem;
+        margin-left: 8%;
+        display: none;
+        cursor: pointer;
+        margin-bottom: 25px;
+    }
+    nav .openMenu:hover
+    {
+        transform: rotate(360deg);
+        transition: transform 2s ease-in-out;
+    }
+    nav .mainMenu {
+        clip-path: ellipse(80% 80% at 20% 20%); 
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 10;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #0d3895;
+        transition: top 0.5s ease;
+        display: none;
+        opacity: 0.98;
+    }
+    nav .mainMenu .closeMenu {
+        z-index: 5;
+        opacity: .5;
+        color: red;
+        display: block;
+        position: absolute;
+        top: 7%;
+        left: 49%;
+        opacity: 0.6;
+    }
+    nav .fa-times:hover
+    {
+        color: forestgreen;
+        transform: rotate(90deg);
+        transition: transform .75s ease-in-out;
+        opacity: 1;
+    }
+    nav .openMenu {
+        display: inline-block;
+    }
+    nav .mainMenu li a:hover {
+        background: none;
+        color: #9d2992;
+        font-size: 1.8rem;
+    }
+    .icons i {
+        display: inline-block;
+        padding: 12px;
+    }
+    .fa-times{
+        float: right;
+    }   
+}
+
+@media(max-width: 460px){
+    .logo
+    {
+        margin: auto;
+        padding: 0;
+    }
+    .logo:hover
+    {
+        justify-content: left;
+        text-decoration: none;
+        margin: auto;
+    }
+    nav .openMenu
+    {
+        margin: auto;
+        padding: 0;
+    }
+}
+
+.form-control
+{
+    width: 30%;
+}
+.vozniRed
+{
+    width: 60%;
+    height: 95%;
+
+}
+#hiddenField
+{
+    display: inline-block;
+}
+.Signup-head{
+    text-align: center;
+    padding:8px;
+}
+.signup-content .radio{
+    margin:10px 10px;
+}
+.signup-content2
+{
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+.signup-content2 .input{
+    width:95%;
+    padding:10px;
+    margin:10px;
+    color:#fff;
+}
+.signup-content2 .tarikh{
+    margin:10px;
+    padding:10px;
+    color:#fff;
+}
+.signup-content2  .person{
+    padding:10px;
+    margin:10px;
+    width: 50%;
+    color:#fff;
+}
+.signup-content2 .tavel2
+{
+    margin: 5px;
+    width: 30%;
+}
+#razredVagona
+{
+    width: 25%;
+}
+#pretrazivanje:hover
+{
+    color: white;
+}
+.signup-content2 .submit-btn{
+    border:none;
+    outline:none;
+    padding:10px;
+    margin-left: 14.5%;
+    font-size: 25px;;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: right;
+}
+@media(max-width: 770px)
+{
+    .vozniRed
+    {
+        width: 90%;
+        height: 95%;
+    }
+}

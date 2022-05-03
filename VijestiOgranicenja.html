@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+    <title>Ograničenja ID-a</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9CE7AE;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <!--navbar za ostale stranice-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li>
+              <a class="nav-link" href="Prijava.html">Povratak</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="indexVijesti.html">Pregled vijesti</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="administracijaVijesti.html">Administracija</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="VijestiOgranicenja.html">Ograničenja</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!--dio za unos i button za spremanje-->
+    <div class="background-image">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-center" style="margin-top: 15%; font-weight: 900;">
+          <label for="counterVijesti">Unesite <span style="color: rgb(230, 32, 32);">početni</span> ID: </label>
+          <br/>
+          <input id="counterVijesti" type="number" min="1" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+        </div>
+        <div class="col-md-6 text-center" style="margin-top: 15%; font-weight: 900;">
+          <label for="counterVijestiOgranicenje">Unesite <span style="color: rgb(230, 32, 32);">Ograničenje</span> za ID: </label>
+          <br/>
+          <input id="counterVijestiOgranicenje" type="number" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center" style="margin-top: 10%; font-weight: 900;">
+          <button onclick="SpremanjePromjena()" type="submit" class="btn btn-lg btn-primary">Spremi Promjene</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+    <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="javascript/firebase_config.js"></script>
+    <script src="javascript/administracijaVijesti.js"></script>
+    
+  </body>
+
+  <style>
+    *
+    {
+      margin: 0;
+      padding: 0;
+    }
+    .background-image{
+      background-image: url('img/patternOgranicenje.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100vh;
+      
+    }
+  </style>
+  </html>

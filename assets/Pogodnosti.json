@@ -1,0 +1,40 @@
+{
+	"Pogodnosti": [
+        {
+			"NazivPogodnosti": "Redovna cijena",
+			"Postotak": 0
+        },
+        {
+			"NazivPogodnosti": "Djeca do 6 godina",
+			"Postotak": 100
+		},
+		{
+			"NazivPogodnosti": "Djeca 6-12 godina",
+			"Postotak": 50
+        },
+        {
+			"NazivPogodnosti": "Mladi 12-26",
+			"Postotak": 30
+        },
+        {
+			"NazivPogodnosti": "Učenik",
+			"Postotak": 100
+        },
+        {
+			"NazivPogodnosti": "Student",
+			"Postotak": 50
+        },
+        {
+			"NazivPogodnosti": "Starije osobe (60+ godina)",
+			"Postotak": 50
+        },
+        {
+			"NazivPogodnosti": "Osobe s invaliditetom",
+			"Postotak": 75
+        },
+        {
+			"NazivPogodnosti": "Novinari",
+			"Postotak": 30
+        }
+	]
+}

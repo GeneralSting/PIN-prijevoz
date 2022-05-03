@@ -1,0 +1,62 @@
+body 
+{
+  font-family: 'Nunito', sans-serif;
+  background-color: rgb(160, 195, 216);
+}
+#naslov
+{
+  position: relative;
+  text-align: center;
+  margin-bottom: 25px;
+  margin-top: 5%;
+  font-size: 50px;
+}
+#login
+{
+  font-size: 30px; 
+  display: block; 
+  margin: auto; 
+  margin-top: 5%; 
+  background-color: rgb(142, 233, 142); 
+  padding: 3% 20%;
+}
+#login:hover
+{
+  background-color: rgb(91, 230, 91); 
+}
+
+/* Za slike koje salju korak unazad*/
+.imageBox {  
+  position: relative;
+  margin-left: 4%;
+  margin-top: 2%;
+}
+
+.imageBox .hoverImg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+}
+
+.imageBox:hover .hoverImg {
+  display: block;
+}
+
+@media(max-width: 770px){
+  #slikaZaPovratak
+  {
+    position: relative;
+    left: 0;
+    right: 0;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+  }
+  .imageBox:hover .hoverImg{
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+}

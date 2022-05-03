@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+    
+    <title>OWP - LV5</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9CE7AE;">
+        <a class="navbar-brand" href="index.html"><img src="img/vsmti_logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Pregled vijesti</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="administracija.html">Administracija</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <h1 class="display-3 text-center">Pregled pojedine vijesti</h1>
+    <div id="sve-vijesti" class="container">
+      <!--  primjer za pojedinu karticu vijesti -->
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title" id="vijest-naziv"></h5>
+          <p class="card-text" id="vijest-tekst"></p>
+        </div>
+        <div class="card-footer text-muted" id="vijest-datum"></div>
+      </div>
+
+    </div>
+
+    <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="js/firebase_config.js"></script>
+    <script src="js/vijest.js"></script>
+  </body>
+</html>

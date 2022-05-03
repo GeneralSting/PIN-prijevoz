@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">    
+  <title>Tablica kupljenih karti</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+    <body>
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9CE7AE;">        
+            <ul class="navbar-nav mr-auto" style="align-items: center;">
+              <li class="nav-item">
+                <a class="nav-link" href="Prijava.html">Povratak</a>
+              </li>
+            </ul>
+        </nav>
+      </header>
+      <h1 class="display-3 text-center">Pregled kupljenih karti</h1>
+      <br/>
+      <div>  
+        <input type="text" name="search" id="search" class="form-control" style="width: 40%; position: relative; margin: auto;"/>  
+      </div> 
+      <br/>
+      <div class="container">
+        <table id="tablica-karte" class="table table-hover" onclick="addRowHandlers()">
+          <thead class="thead-dark">
+            <tr>
+              <th style="display: none;">ID</th>
+              <th>Polaziste</th>
+              <th>Odrediste</th>
+              <th>Datum kupnje</th>
+              <th>Datum trajanja</th>
+              <th>Cijena</th>
+            </tr>
+          </thead>
+          <tbody id="tijeloTabliceGradovi">
+          </tbody>
+        </table>
+      </div>
+
+
+    <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+    <script>
+      dodavanjeOib = false;
+      $(document).ready(function(){  
+        $('#search').keyup(function(){  
+             search_table($(this).val());  
+        });  
+        function search_table(value){  
+             $('#tijeloTabliceGradovi tr').each(function(){  
+                  var found = 'false';  
+                  $(this).each(function(){  
+                       if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
+                       {  
+                            found = 'true';  
+                       }  
+                  });  
+                  if(found == 'true')  
+                  {  
+                       $(this).show();  
+                  }  
+                  else  
+                  {  
+                       $(this).hide();  
+                  }  
+             });  
+        }  
+      });</script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+    <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="javascript/firebase_config.js"></script>
+    <script src="javascript/korisnikOIB.js"></script>   <!--Dohvacanje vrijednosti korisnikovog oib-a-->
+    <script src="javascript/UpisivanjeKartiKorisnika.js"></script>
+    </body>
+</html>

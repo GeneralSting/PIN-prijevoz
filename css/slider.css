@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/*Replaced elements-> <img>, <video>, elementi čiji je opseg izvan css-a. Oni su vanjski objekti čije reprezentacija ne ovisi o css-u. Css može utjecati na elemente, ali ne na njihov sadržaj*/
+
+.slider{
+  position: relative;
+  background: #c4c5d3;
+  width: 70%;
+  min-height: 800px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.slider .slide{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin-top: 7.5%;
+  clip-path: circle(0% at 0 50%);     /*svojstvo pravi izrezano područje koje predstavlja koji dio elementa će biti prikazan, elementi unutar tog dijela će biti prikazani, a oni elementi izvan će biti sakriveni*/
+}
+.slider .slide.active{
+  clip-path: circle(150% at 0 50%);
+  transition: 2s;
+}
+.slider .slide img{
+  opacity: 0.8;                  
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                 /*postavlja kako bi sadržaj replaced elements trebao promjeniti veličinu kako bi odgovarao (usjeo) svom spremniku. Vrijednost->slika će ispuniti prostor spremnika iako bi to moglo utjecati na veličinu slike (dimnezije)*/
+}
+.slider .slide .info{
+  position: absolute;               /*element je uklonjen s normalnog toka dokumenta, postavljen je relativno najbližem svoj pretku te nije napravljen prostor za taj element. Prostor gdje bi taj element trebao biti prema normalnog toku dokumenta nije sačuvan*/
+  color: #222;
+  background: rgba(255, 255, 255, 0.281);
+  width: 75%;
+  margin-top: 400px;
+  margin-left: 50px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 25px rgb(1 1 1 / 5%);    /*dodaje efekat sjene okolo elementa*/
+}
+.slider .slide .info h2{
+  font-size: 2em;
+  font-weight: 1000;
+}
+.slider .slide .info p{
+  font-size: 1em;
+  font-weight: 800;
+}
+.navigation{
+  height: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0.5;
+  transition: opacity 0.5s ease;    /*sadrži 4 svojstva: transition-timing-function-> specifies a transition effect with a slow start, then fast, then end slowly (this is default). transition-duration->pola sekunde. Transition-delay->nema. transition-property->nema*/
+}
+.slider:hover .navigation{
+  opacity: 1;
+}
+.prev-btn, .next-btn{
+  z-index: 9;
+  font-size: 2em;
+  color: #222;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  cursor: pointer;
+}
+.prev-btn{
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.prev-btn:hover
+{
+  background-color: deepskyblue;
+}
+.next-btn{
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.next-btn:hover
+{
+  background-color: deepskyblue;
+}
+.navigation-visibility{
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+}
+.navigation-visibility .slide-icon{
+  z-index: 9;
+  background: rgba(255, 255, 255, 0.5);
+  width: 20px;
+  height: 10px;
+  transform: translateY(-50px);                    /*svojstvo nam omogućuje rotiranje, skaliranje, košenje ili prenošenje (translacija). Modificira koordinatni prostor css-a*/
+  margin: 0 6px;
+  border-radius: 2px;
+  box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+}
+.navigation-visibility .slide-icon.active{
+  background: #4285F4;
+}
+@media (max-width: 900px){
+  .slider
+  {
+    width: 100%;
+  }
+  .slider .slide .info{
+    position: relative;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .slider .slide img{
+    opacity: 0.8;                  
+    position: absolute;
+    margin-top: auto;
+    width: 100%;
+    height: 100%;
+    object-fit:contain;                 /*postavlja kako bi sadržaj replaced elements trebao promjeniti veličinu kako bi odgovarao (usjevo) svom spremniku. Vrijednost->slika će ispuniti prostor tako što će se skalirati i sadržati omjer stranica*/
+  }
+}
+
+@media (max-width: 500px){
+  .slider
+  {
+    width: 100%;
+  }
+  .slider .slide .info{
+    padding: 5px;
+    position: relative;
+    width: 98%;
+    margin-top: 35em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .slider .slide img{
+    opacity: 0.8;                  
+    position: absolute;
+    margin-top: auto;
+    width: 100%;
+    height: 100%;
+    object-fit:contain;                 /*postavlja kako bi sadržaj replaced elements trebao promjeniti veličinu kako bi odgovarao (usjevo) svom spremniku. Vrijednost->slika će ispuniti prostor spremnika iako bi to moglo utjecati na veličinu slike (dimnezije)*/
+  }
+  .slider .slide .info h2{
+    font-size: 1.1em;
+    font-weight: 1000;
+  }
+  .slider .slide .info p{
+    font-size: .8em;
+    font-weight: 800;
+  }
+}

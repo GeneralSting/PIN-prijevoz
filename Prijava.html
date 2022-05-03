@@ -1,0 +1,697 @@
+<html>
+<head>
+  <title>Prijava/kupnja karte</title>
+  <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/stylePrijava.css"/>  <!--Css za Prijava.html--> 
+  <link rel="stylesheet" href="css/adminCss.css">     <!--Css za admin div-->
+</head>
+<!--JavaScript je pisan u html-u-->
+<!--Div element za prijavu koji se prikazuje ako korisnik nije prijavljen-->
+<body onload="DatumJednosmjerna()">
+  <div class="imageBox">
+    <div class="imageInn">
+      <a id="korakUnazad" href="index.html"><img src="C:/wamp64/www/PIN-prijevoz/img/KorakUnazad.png" alt=""></a>
+    </div>
+    <div class="hoverImg">
+      <a href="index.html"><img src="C:/wamp64/www/PIN-prijevoz/img/hoverKorakUnazad.png" alt=""></a>
+    </div>
+  </div>
+  <div id="login_div" class="main-div">
+    <h1>Prijava za kupnju karte</h1>
+    <input type="email" placeholder="Email..." id="email_field" />
+    <input type="password" placeholder="Password..." id="password_field" />
+    <button id="prijava" onclick="login()">Prijava</button>
+    <br/>
+    <div id="dodatno">
+    <a id="registracija" style="text-decoration: none;" href="Registracija.html">Registracija</a>
+    <a onclick="ZaboravljenaLozinka()" id="zaboravljenaLozinka" style="text-decoration: none;" href="#">Zaboravili ste lozinku?</a>
+    </div>
+  </div>
+
+  <!--Div element koji se prikazuje kada je korisnik uspješno prijavljen-->
+  <!--Bootstrap s linijskim css-om-->
+  <div id="user_div" class="loggedin-div">
+    <div class="imageBoxArhiva">
+      <div class="imageInnArhiva">
+        <a href="TablicaKartiKorisnika.html"><img src="C:/wamp64/www/PIN-prijevoz/img/arhiva.png" alt=""></a>
+      </div>
+      <div class="hoverImgArhiva">
+        <a onclick="" href="TablicaKartiKorisnika.html"><img src="C:/wamp64/www/PIN-prijevoz/img/arhivaHover.png" alt=""></a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7" id="dobrodoslica">
+          <h1>Dobrodošao</h1>
+          <p id="user_para"></p>
+        </div>
+        <div class="col-md-3">
+          <button onclick="logout()" style="align-items: center;">Odjava</button>
+        </div>
+        </div>
+      <form style="margin: 50px; color: #fff;" class="vozniRed">
+        <div class="signup-form bg-dark">
+          <div class="Signup-head bg-primary">
+            <h1>Kupnja online karte</h1>
+          </div>
+          <div class="signup-content" class="klasa">
+            <input type="radio" class="radio" name="tipKarte" id="jednosmjerna" checked>
+            <label class="text-white" for="jednosmjerna" onclick="ShowHide(false); DatumJednosmjerna()">Jednosmjerna &#160;&#160;&#160;</label>
+            <input type="radio" class="radio" name="tipKarte" onclick="ShowHide(this.checked); DatumPovratna()" id="povratna">
+            <label class="text-white" for="povratna">Povratna</label>
+          </div>
+          <div class="signup-content2">
+            <input list="odabirPolazista" placeholder="Polazište" class="input bg-dark" id="inputOdabirPolazista">
+            <datalist id="odabirPolazista"></datalist>
+            <input list="odabirOdredista" placeholder="Odredište" class="input bg-dark" id="inputodabirOdredista"><br>
+            <datalist id="odabirOdredista"></datalist>
+
+            <div>
+              <label for="brojPutnika">Broj putnika:</label>
+              <input type="number" class="bg-dark person" min="1" max="6" value="1" onkeydown="return false" placeholder="Broj putnika" id="brojPutnika">
+            </div>
+            <br/>
+            <div>
+              <label for="razredVagona">Razred vagona:</label>
+              <select name="odabirRazredaVagona" id="razredVagona" class="bg-dark text-white">
+                <option value="2. razred">2. razred</option>
+                <option value="1. razred">1. razred</option>
+              </select>
+            </div>
+            <br/>
+            <label class="text-white travel">Pogodnost 1:</label>
+            <select class="bg-dark text-white travel2" id="odabirPogodnosti">
+            </select>
+            <div id="prikazPogodnosti2" style="display: none;">
+              <br/>
+              <label class="text-white travel">Pogodnost 2:</label>
+              <select class="bg-dark text-white travel2" id="odabirPogodnosti2">
+              </select>
+            </div>
+            <div id="prikazPogodnosti3" style="display: none;">
+              <br/>
+              <label class="text-white travel">Pogodnost 3:</label>
+              <select class="bg-dark text-white travel2" id="odabirPogodnosti3">
+              </select>
+            </div>
+            <div id="prikazPogodnosti4" style="display: none;">
+              <br/>
+              <label class="text-white travel">Pogodnost 4:</label>
+              <select class="bg-dark text-white travel2" id="odabirPogodnosti4">
+              </select>
+            </div>
+            <div id="prikazPogodnosti5" style="display: none;">
+              <br/>
+              <label class="text-white travel">Pogodnost 5:</label>
+              <select class="bg-dark text-white travel2" id="odabirPogodnosti5">
+              </select>
+            </div>
+            <div id="prikazPogodnosti6" style="display: none;">
+              <br/>
+              <label class="text-white travel">Pogodnost 6:</label>
+              <select class="bg-dark text-white travel2" id="odabirPogodnosti6">
+              </select>
+            </div>
+            <br/>
+            <br/>
+            <input type="button" value="Kupi" class="submit-btn bg-primary" id="pretrazivanje" onclick="KupnjaKarte(); ProvjeraUnesenihPodataka(); PlacanjeKarte();">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--div koji se prikazuje kada se admin prijavi-->
+  <div id="admin_div" style="display: none;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <button onclick="logout()" style="margin-top: 25px;">Odjava</button>
+        </div>
+          <div class="col-md-6">
+              <img src="C:/wamp64/www/PIN-prijevoz/img/admin.png" alt="" class="slikaAdmina">
+          </div>
+      </div>
+  </div>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6">
+              <a id="btnAdminGradova" href="Administracija gradova.html">Administracija gradova</a>
+          </div>
+          <div class="col-md-6">
+              <a id="btnPregledKarti" href="TablicaKarti.html">Pregled kupljenih karti</a>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+            <a id="btnPregledVijesti" href="administracijaVijesti.html">Pregled tablice vijesti</a>
+        </div>
+    </div>
+  </div>
+</div>
+
+  <!--JavaScript pisan u script elementima, ovdje se nalazi firebase-config-->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+  import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+</script>
+<script>
+  // Initialize Firebase
+  const config = {
+  apiKey: "AIzaSyBbDM_m_ckmCwNsnZlAqo997g4_AqzqWjY",
+  authDomain: "registriranikorisnici.firebaseapp.com",
+  databaseURL: "https://registriranikorisnici-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "registriranikorisnici",
+  storageBucket: "registriranikorisnici.appspot.com",
+  messagingSenderId: "1070128720438",
+  appId: "1:1070128720438:web:66a3e7811d6317a72bc697"
+};
+  firebase.initializeApp(config);
+  var oDb = firebase.database();  //kompletna baza
+  var oDb_Pogodnosti = oDb.ref('Pogodnosti');  //čvor Pogodnosti
+  var oDb_Gradovi = oDb.ref('Gradovi');  //čvor Gradovi
+  var oDb_Karte = oDb.ref('Karte');
+</script>
+<!--Zaboravljena lozinka, samo dizajnerski-->
+<script>
+  function ZaboravljenaLozinka()
+  {
+    Swal.fire
+    ({
+      title: 'Unesite svoju email adresu',
+      input: 'text',
+      inputAttributes: {
+      autocapitalize: 'off'
+  },
+      showCancelButton: true,
+      confirmButtonText: 'Pošalji',
+      showLoaderOnConfirm: true,
+      preConfirm: (login) => 
+      {
+      if(login.includes("@") && login.length > 4 && login.includes("."))
+      {
+        Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: login,
+        footer: "Zahtjev za promjenom lozinke poslan je na unesenu e-mail adresu",
+        showConfirmButton: false,
+        timer: 5000
+      })
+    }
+      else
+      {
+        Swal.fire({
+          icon: 'error',
+          title: 'Neispravan oblik',
+          text: 'Provjerite točnost unesenog e-maila',
+        })
+      }
+    }
+  })
+}
+//Nepotrebna funkcija, dodaje vrijednosti input type date
+function Validate()
+{
+  //alert("Funkcija");
+  if(document.getElementById('jednosmjerna').checked)
+  {
+    maxVrijeme.setHours(maxVrijeme.getHours() + 168);
+  }
+  if(document.getElementById('povratna').checked)
+  {
+  maxVrijeme.setHours(maxVrijeme.getHours() + 336);
+  }
+}
+//Dodavanje max datuma za jednosmjernu kartu
+function DatumJednosmjerna()
+{
+  maxVrijeme = new Date();
+  maxVrijeme.setHours(maxVrijeme.getHours() + 168);
+}
+//Dodavanje max datuma za povratnu kartu
+function DatumPovratna()
+{
+  maxVrijeme = new Date();
+  maxVrijeme.setHours(maxVrijeme.getHours() + 336);
+}
+//Funkcija za izračun udaljenosti gradova u km preko njihovih koordinata
+function calcCrow(lat1, lon1, lat2, lon2) 
+  {
+    var R = 6371; // km
+    var dLat = toRad(lat2-lat1);
+    var dLon = toRad(lon2-lon1);
+    var lat1 = toRad(lat1);
+    var lat2 = toRad(lat2);
+
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    var d = R * c;
+    //alert(d);
+    kilometraza = d;
+    return d;
+  }
+// Converts numeric degrees to radians
+function toRad(Value) 
+{
+  return Value * Math.PI / 180;
+}
+//Funkcija prosljđuje koordinate odabranih gradova funkciji calcCrow(lat1, lon1, lat2, lon2) 
+function Kordinate(polaziste, odrediste)
+{
+  var latitudaPolazista;
+  var longitudaPolazista;
+  var latitudaOdredista;
+  var longitudaOdredista;
+  oDb_Gradovi.on('value', function(oOdgovorPosluzitelja)
+{
+oOdgovorPosluzitelja.forEach(function(oGradSnapshot)
+{
+  var oGrad = oGradSnapshot.val();
+  if(oGrad.GradNaziv == polaziste)
+  {
+    latitudaPolazista = oGrad.Latitude;
+    longitudaPolazista = oGrad.Longitude;
+  }
+  if(oGrad.GradNaziv == odrediste)
+  {
+    longitudaOdredista = oGrad.Longitude;
+    latitudaOdredista = oGrad.Latitude;
+  }
+})
+})
+  calcCrow(latitudaPolazista, longitudaPolazista, latitudaOdredista, longitudaOdredista);
+}
+//Nebitno
+  var danas = new Date();
+  var maxVrijeme = new Date();
+
+//Stvaranje varijabli kojima će se tijekom rada programa dodati potrebna vrijednost
+var polaziste;
+var odrediste;
+var dovrsenaFunkcija = false;
+//Funkcija koja provjerava kada se pritisne gumb odredište i polazište te ih šalje funkciji Kordinate(polaziste, odrediste);
+function ProvjeraUnesenihPodataka()
+{
+  dovrsenaFunkcija = false;
+  var provjeraPolazista;
+  polaziste = document.querySelector('#inputOdabirPolazista').value;
+  odrediste = document.querySelector('#inputodabirOdredista').value;
+  oDb_Gradovi.orderByChild("GradNaziv").equalTo(polaziste).once("value", snapshot => {
+    if(snapshot.exists()){
+      provjeraPolazista = true;
+      dovrsenaFunkcija = true;
+      //alert("Postoji, "+ polaziste);
+    }
+    else
+    {
+      provjeraPolazista = false;
+      if(polaziste == "")
+      {
+        Swal.fire({
+        icon: 'error',
+        title: "Neunešena vrijednost",
+        text: 'Unesite polazište',
+        })
+      }
+      else
+      {
+      Swal.fire({
+      icon: 'error',
+      title: polaziste,
+      text: 'Navedeno polazište ne postoji',
+    })
+      }
+    }
+  });
+  oDb_Gradovi.orderByChild("GradNaziv").equalTo(odrediste).once("value", snapshot => {
+  if(snapshot.exists()){
+    if(polaziste == odrediste)
+    {
+      dovrsenaFunkcija = false;
+      Swal.fire({
+        icon: 'error',
+        title: "Greška",
+        text: 'Polazište ne može biti i odredište',
+      })
+    }
+    else
+    {
+      //bilo je nešto, provjerit
+    }
+  }
+  else
+  {
+    if(provjeraPolazista == true)
+    {
+      if(odrediste == "")
+      {
+        Swal.fire({
+        icon: 'error',
+        title: "Neunešena vrijednost",
+        text: 'Unesite odredište',
+    })
+      }
+      else
+      {
+        Swal.fire({
+        icon: 'error',
+        title: odrediste,
+        text: 'Navedeno odredište ne postoji',
+        })
+      }
+    dovrsenaFunkcija = false;
+    }
+  }
+  })
+  Kordinate(polaziste, odrediste);
+}
+//Stvaranje varijabli kojima će se tijekom rada programa dodati potrebna vrijednost
+var kilometraza;
+var jednosmjernaPovratna;
+var klasaVagona;
+var putnikaBroj
+var tipCijena = [];
+var cijena = 0;
+//Funkcija zbraja cijenu karte i traži potvrdu korisnika, ako je kupi poziva se funkcija DatumValjanosti(jednosmjernaPovratna), ova funkcija također pri množenju cijene poziva funkciju MnozenjePogodnosti(nazivPogodnosti)
+function PlacanjeKarte()
+{
+  if(dovrsenaFunkcija == true)
+  {
+    var zbroj = 0;
+    var iznos;
+    var i;
+    for(i = 0; i < putnikaBroj; i++)
+    {
+      if(klasaVagona == "1. razred")
+      {
+        if(jednosmjernaPovratna == "povratna")
+        {
+          iznos = ((kilometraza * 0.7) * 2) * 0.7;
+          udaljenost = kilometraza * 2;
+        }
+      else
+      {
+        iznos = kilometraza * 0.7;
+        udaljenost = kilometraza
+      }
+    }
+    if(klasaVagona == "2. razred")
+    {
+      if(jednosmjernaPovratna == "povratna")
+      {
+        iznos = ((kilometraza * 0.35) * 2) * 0.7;
+        udaljenost = kilometraza * 2;
+      }
+      else
+      {
+        iznos = kilometraza * 0.35;
+        udaljenost = kilometraza
+      }
+    }
+    if(i < putnikaBroj)
+    {
+      zbroj += iznos * MnozenjePogodnosti(tipCijena[i]); 
+    }
+  }
+  cijena = Math.round(zbroj);
+  if(jednosmjernaPovratna == "jednosmjerna")
+  {
+    Swal.fire({
+      title: 'Želite li kupiti kartu?',
+      text: "Jednosmjerna: " + polaziste+ "-"+odrediste+", " +Math.round(zbroj)+" kuna",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Kupi'
+      }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Kupljeno!',
+        'Karta Vam je poslana na e-mail',
+        'success'
+      )
+      DatumValjanosti(jednosmjernaPovratna)
+    }
+      })
+  }
+  else
+  {
+    Swal.fire({
+      title: 'Želite li kupiti kartu?',
+      text: "Povratna: " + polaziste+ "<-->"+odrediste+", " +Math.round(zbroj)+" kuna",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Kupi'
+    }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Kupljeno!',
+        'Karta Vam je poslana na e-mail',
+        'success'
+    )
+    DatumValjanosti(jednosmjernaPovratna)
+    } 
+  })
+  }
+}
+}
+
+//ovim varijablama ce biti dodijeljena vrijednost ovisno o tipu karte, te ce se kasnije trajanjeKarte zapisati u bazu
+trajanjeKarte = new Date();
+tjedan = new Date();
+dvaTjedna = new Date();
+//Funkcija ovisno i tipu karte dodaje vrijeme trajnosti karti koju je korisnik kupio
+function DatumValjanosti(datumValjanosti)
+{
+  trajanjeKarte = new Date();
+  if(datumValjanosti == "jednosmjerna")
+  {
+    tjedan = new Date(Date.now() + 6.048e+8);
+    trajanjeKarte = tjedan.toLocaleDateString("hr");
+  }
+  else
+  {
+    dvaTjedna = new Date(Date.now() + 12096e5);
+    trajanjeKarte = dvaTjedna.toLocaleDateString("hr");   
+  }
+  
+  datumKupnje = new Date(Date.now());
+  datumKupnje = datumKupnje.toLocaleDateString("hr");
+  DodavanjeId()
+}
+
+var id = 0;
+//Declare a function that increment a counter in a transaction
+function getId() {
+    var counterRef = firebase.database().ref('counter');
+    return counterRef.transaction(function(currentId) {
+      return currentId + 1;
+    });
+  }
+
+function DodavanjeId()    //funkcija dodjeljuje ID javnoj varijabli
+{
+  //Call the asynchronous getID() function
+  getId().then(function(transactionResult,) {   //dohvacanje ID iz baze
+    var newId = transactionResult.snapshot.val();
+    id = newId;
+  });
+  setTimeout(() =>{
+    DodavanjeKarte();
+  }, 1000)
+}
+
+var udaljenost = 0;
+//Funkcija dodaje kartu u firebase
+function DodavanjeKarte()
+{
+  const iterator = tipCijena.values();
+  var zadnjaVrijednost = false;
+  var svePogodnosti = "";
+  for(var i = 0; i < tipCijena.length; i++)
+  {
+    if(i + 1 == tipCijena.length)
+    {
+      svePogodnosti += tipCijena[i]
+    }
+    else
+    {
+      svePogodnosti += tipCijena[i]+", ";
+    }
+  }
+  udaljenost = Math.round(udaljenost);
+  var sKey = firebase.database().ref().child('Karte').push().key; 
+  var novaKarta =
+  {
+    id: id,
+    ime: korisnikIme,
+    prezime: korisnikPrezime,
+    oib: korisnikOib,
+    polaziste: polaziste,
+    odrediste: odrediste,
+    razred: klasaVagona,
+    tipKarte: jednosmjernaPovratna,
+    putnika: putnikaBroj,
+    kupljeno: datumKupnje,
+    istek: trajanjeKarte,
+    pogodnosti: svePogodnosti,
+    cijena : cijena+" kn",
+    udaljenost: udaljenost+" km"
+  }
+  var oZapis = {};
+  oZapis[sKey] = novaKarta;
+  oDb_Karte.update(oZapis);
+}
+
+//Funkcija pronalazi određenu pogodnost prema nazivu koju joj je poslala funkcije te vraća postotak te pogodnosti
+function MnozenjePogodnosti(nazivPogodnosti)
+{
+  var postotak = 1;
+  var provjeraUnosa = false;
+  oDb_Pogodnosti.on('value', function(oOdgovorPosluzitelja)
+  {
+    oOdgovorPosluzitelja.forEach(function(oPogodnostiSnapshot)
+    {
+      var oPogodnosti = oPogodnostiSnapshot.val();
+      if(oPogodnosti.NazivPogodnosti == nazivPogodnosti)
+      {
+        provjeraUnosa = true;
+        postotak = oPogodnosti.Postotak;
+      }
+    })
+  })
+  if(provjeraUnosa == true)
+  {
+    return postotak;
+  }
+}
+
+//Kada se klikne gumb poziva se funkcija koja dohvaća vrijednosti razreda, broj putnika, tipa karte i unesene pogodnosti
+function KupnjaKarte()
+{
+  if(document.getElementById('jednosmjerna').checked)
+  {
+    jednosmjernaPovratna = "jednosmjerna";
+  }
+  else
+  {
+    jednosmjernaPovratna = "povratna";
+  }
+  //alert(jednosmjernaPovratna);
+  //alert(document.getElementById('razredVagona').value);
+  klasaVagona = document.getElementById('razredVagona').value;
+  //alert(document.getElementById('brojPutnika').value);
+  putnikaBroj = document.getElementById('brojPutnika').value;
+  if(document.getElementById('brojPutnika').value == 1)
+  {
+    //alert(document.getElementById('odabirPogodnosti').value);
+    tipCijena[0] = document.getElementById('odabirPogodnosti').value
+  }
+  if(document.getElementById('brojPutnika').value == 2)
+  {
+    //alert(document.getElementById('odabirPogodnosti').value);
+    //alert(document.getElementById('odabirPogodnosti2').value);
+    tipCijena[0] = document.getElementById('odabirPogodnosti').value
+    tipCijena[1] = document.getElementById('odabirPogodnosti2').value
+  }
+  if(document.getElementById('brojPutnika').value == 3)
+  {
+    //alert(document.getElementById('odabirPogodnosti').value);
+    //alert(document.getElementById('odabirPogodnosti2').value);
+    //alert(document.getElementById('odabirPogodnosti3').value);
+    tipCijena[0] = document.getElementById('odabirPogodnosti').value
+    tipCijena[1] = document.getElementById('odabirPogodnosti2').value
+    tipCijena[2] = document.getElementById('odabirPogodnosti3').value
+  }
+  if(document.getElementById('brojPutnika').value == 4)
+  {
+    /*alert(document.getElementById('odabirPogodnosti').value);
+    alert(document.getElementById('odabirPogodnosti2').value);
+    alert(document.getElementById('odabirPogodnosti3').value);
+    alert(document.getElementById('odabirPogodnosti4').value);*/
+    tipCijena[0] = document.getElementById('odabirPogodnosti').value
+    tipCijena[1] = document.getElementById('odabirPogodnosti2').value
+    tipCijena[2] = document.getElementById('odabirPogodnosti3').value
+    tipCijena[3] = document.getElementById('odabirPogodnosti4').value
+  }
+  if(document.getElementById('brojPutnika').value == 5)
+  {
+    /*alert(document.getElementById('odabirPogodnosti').value);
+    alert(document.getElementById('odabirPogodnosti2').value);
+    alert(document.getElementById('odabirPogodnosti3').value);
+    alert(document.getElementById('odabirPogodnosti4').value);
+    alert(document.getElementById('odabirPogodnosti5').value);*/
+    tipCijena[0] = document.getElementById('odabirPogodnosti').value
+    tipCijena[1] = document.getElementById('odabirPogodnosti2').value
+    tipCijena[2] = document.getElementById('odabirPogodnosti3').value
+    tipCijena[3] = document.getElementById('odabirPogodnosti4').value
+    tipCijena[4] = document.getElementById('odabirPogodnosti5').value
+  }
+  if(document.getElementById('brojPutnika').value == 6)
+  {
+    /*alert(document.getElementById('odabirPogodnosti').value);
+    alert(document.getElementById('odabirPogodnosti2').value);
+    alert(document.getElementById('odabirPogodnosti3').value);
+    alert(document.getElementById('odabirPogodnosti4').value);
+    alert(document.getElementById('odabirPogodnosti5').value);
+    alert(document.getElementById('odabirPogodnosti6').value);*/
+    tipCijena[0] = document.getElementById('odabirPogodnosti').value
+    tipCijena[1] = document.getElementById('odabirPogodnosti2').value
+    tipCijena[2] = document.getElementById('odabirPogodnosti3').value
+    tipCijena[3] = document.getElementById('odabirPogodnosti4').value
+    tipCijena[4] = document.getElementById('odabirPogodnosti5').value
+    tipCijena[5] = document.getElementById('odabirPogodnosti6').value
+  }
+}
+
+//Stvaranje varijabli kojima će se u funkciji ispod dodati vrijednost, funkcija će izvući podatke i firebase i pozdraviti korisnika
+var korisnikIme = "";
+var korisnikPrezime = "";
+var korisnikOib
+function PozdravKorisnika(id)
+{
+  var database = firebase.database();
+  var ref = database.ref("Registrirani/"+id+"/");
+  ref.on('value', function(user){
+    document.getElementById("user_para").innerText =user.val().ime + " " + user.val().prezime;
+    korisnikIme = user.val().ime;
+    korisnikPrezime = user.val().prezime;
+    korisnikOib = user.val().oib;
+    DodavanjeVrijednostiOib(korisnikOib) //slanje funkciji korisnikov oib
+  })
+}
+
+//dohvaca svrhu korisnika odnosno da li je prijavljeni korisnik ili admin
+function FunkcijaKorisnika(id)
+{
+  var database = firebase.database();
+  var ref = database.ref("Registrirani/"+id+"/");
+  ref.on('value', function(user){
+    svrha = user.val().funkcija;
+  })
+}
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+  <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+  <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="javascript/UpisivanjeGradova.js"></script>
+  <script src="javascript/DodavanjePogodnosti.js"></script>
+  <script src="javascript/vozniRed.js"></script>  <!--JavaScript za formu vozni red-->
+  <script src="javascript/jsPrijava.js"></script> <!--JavaScript uklanja i prikazuje div elemente i provjerava točnost prijava i odjave korisnika-->
+  <script src="javascript/Admin.js"></script>   <!--odnosi se na admin div, kada se admin prijavi-->
+  <script src="javascript/korisnikOIB.js"></script> <!--Pokupi se korisnikov oib te se otvara nova stranica tablica korisnikovih kupljenih karti.-->
+</body>
+</html>

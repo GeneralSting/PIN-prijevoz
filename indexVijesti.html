@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+    
+    <title>Pregled vijesti</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9CE7AE;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li>
+              <a class="nav-link" href="Prijava.html">Povratak</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="indexVijesti.html">Pregled vijesti</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="administracijaVijesti.html">Administracija</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="VijestiOgranicenja.html">Ograničenje</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div class="background-image">
+      <h1 class="display-3 text-center">Sve vijesti</h1>
+      <div id="sve-vijesti" class="container">
+    </div>
+
+    <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="javascript/firebase_config.js"></script>
+    <script src="javascript/vijesti.js"></script> <!--Dodavanje vijesti u kartice-->
+  </body>
+
+  <style>
+      *
+      {
+        margin: 0;
+        padding: 0;
+      }
+      .background-image{
+        background-size: cover;
+        
+      }
+    </style>
+</html>

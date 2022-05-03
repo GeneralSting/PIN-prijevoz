@@ -1,0 +1,261 @@
+body 
+{
+  background: #fff;
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+}
+#povratak
+{
+  color: rgb(0, 38, 255);
+  text-decoration: none;
+  position: absolute;
+  margin-left: 4%;
+  margin-top: 2%;
+  font-size: 20px;
+}
+#povratak:hover
+{
+  color: rgb(173, 121, 121);
+}
+input, button 
+{
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
+
+.main-div, .loggedin-div 
+{
+  width: 50%;
+  margin: 0px auto;
+  margin-top: 5%;
+  padding: 20px;
+  display: none;
+}
+.loggedin-div
+{
+  width: 100%;
+}
+#prijava
+{
+  font-size: 20px;
+  padding: 10px;
+}
+#zaboravljenaLozinka
+{
+  position: absolute;
+  right: 26.5%;
+}
+#zaboravljenaLozinka:hover
+{
+  color: rgb(69, 122, 235);
+}
+#registracija:hover
+{
+  color: rgb(69, 122, 235);
+}
+.main-div input 
+{
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  padding: 15px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 20px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+.main-div input:focus 
+{
+  background-color: rgb(211, 248, 213);
+  border: 3px solid rgb(10, 247, 22);
+}
+.main-div button, .loggedin-div button, #admin_div button
+{
+  background: #5d8ffc;
+  color: #fff;
+  border: 2px solid #1357e7;
+  border-radius: 5px;
+  padding: 15px;
+  display: block;
+  width: 100%;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+.main-div button:hover, .loggedin-div button:hover, #admin_div button:hover
+{
+  background: #fff;
+  color: #5d8ffc;
+  border: 1px solid #5d8ffc;
+  cursor: pointer;
+}
+
+/* Za slike koje salju korak unazad*/
+.imageBox {  
+  position: absolute;
+  margin-left: 4%;
+  margin-top: 2%;
+}
+
+.imageBox .hoverImg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+}
+
+.imageBox:hover .hoverImg {
+  display: block;
+}
+
+
+.imageBoxArhiva {  
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 4%;
+  margin-top: 7%;
+}
+
+.imageBoxArhiva .hoverImgArhiva {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+}
+
+.imageBoxArhiva:hover .hoverImgArhiva {
+  display: block;
+}
+
+@media(max-width: 1110px){
+  .main-div
+  {
+    width: 60%;
+  }
+  #zaboravljenaLozinka
+  {
+    right: 22%;
+  }
+}
+@media(max-width: 550px){
+  .main-div
+  {
+    width: 80%;
+  }
+  #zaboravljenaLozinka
+  {
+    right: 15%;
+  }
+  .imageBox {  
+    position: relative;
+    display: inline-block;
+    margin-top: 2%;
+  }
+  .imageBoxArhiva {  
+    position: absolute;
+    margin-top: 2%;
+  }
+}
+@media(max-width: 550px){
+
+  .main-div
+  {
+    width: 97%;
+  }
+  #zaboravljenaLozinka
+  {
+    right: 6%;
+  }
+}
+@media(max-width: 700px)
+{
+  #povratak
+  {
+    top: 5px;
+    left: 5px;
+    margin-bottom: 10px;
+  }
+}
+
+#dobrodoslica
+{
+  text-align: center;
+  font-size: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', cursive;
+}
+#hiddenField
+{
+  display: inline-block;
+}
+.Signup-head{
+  color: #fff;
+  text-align: center;
+  padding:8px;
+}
+.signup-content .radio{
+  margin:10px 10px;
+}
+.signup-content2
+{
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+}
+.signup-content2 .input
+{
+  width:95%;
+  padding:10px;
+  margin:10px;
+  color:#fff;
+}
+.signup-content2 .tarikh
+{
+  margin:10px;
+  padding:10px;
+  color:#fff;
+}
+.signup-content2  .person
+{
+  padding:10px;
+  margin:10px;
+  width: 50%;
+  color:#fff;
+}
+.signup-content2 .tavel2
+{
+  margin: 5px;
+  width: 30%;
+}
+#razredVagona
+{
+  width: 25%;
+}
+#pretrazivanje:hover
+{
+  color: white;
+}
+.signup-content2 .submit-btn
+{
+  border:none;
+  outline:none;
+  padding:10px;
+  margin-left: 14.5%;
+  font-size: 25px;;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: right;
+}
+
+#korakUnazad
+{
+  display: none;
+}
+

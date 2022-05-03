@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">    
+  <title id="naslov">Arhiva karata</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+<body onload="DodavanjePodataka()" style="background-image: url('img/trainBackground3.jpg');">
+
+    <div class="container" id="izgledKarte" style="margin-top: 3%;">
+        <div class="row" class="prviRed" style="background: rgba(226, 160, 36, 0.6); width: 100%; z-index: 3;">
+            <div class="col-md-8">
+                <h1 style="text-align: center;">PIN-Putnički prijevoz</h1>
+                <br/>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p>OIB: 80572192786</p>
+                            <p>Strojarska cesta</p>
+                            <p>10000 Zagreb</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h2 style="text-decoration: underline; text-align: right;">Prijevozna karta</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"><img src="img/qrKod_128.jpg" alt="" style="margin-top: 3%;"></div>
+        </div>
+        <hr style="border: 7px solid rgb(29, 126, 73); border-radius: 5px; margin-right: 2%;"/>
+        <div class="row" class="drugiRed">
+            <div class="col-md-3" id="vlasnikKarte" style="font-weight: 700;"style="font-weight: 700;">
+            </div>
+            <div class="col-md-3" id="razredVagona" style="font-weight: 700;">
+            </div>
+            <div class="col-md-3" id="datumKupnje" style="font-weight: 700;">
+            </div>
+            <div class="col-md-3" id="datumIsteka" style="font-weight: 700;">
+            </div>
+        </div>
+        <hr style="border: 7px solid rgb(29, 126, 73); border-radius: 5px; margin-right: 2%;"/>
+        <br/>
+        <div class="row">
+            <div class="col-md-6">
+                <h2 style="text-align: center;">Odlazak</h2>
+                <br/>
+                <div id="odlazakPolaziste" style="font-weight: 700;">
+                </div>
+                <div id="odlazakDolaziste" style="font-weight: 700;">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 style="text-align: center;">Povratak</h2>
+                <br/>
+                <div id="povratakPolaziste" style="font-weight: 700;">
+                </div>
+                <div id="povratakDolaziste" style="font-weight: 700;"> 
+                </div>
+            </div>
+        </div>
+        <hr style="border: 7px solid rgb(29, 126, 73); border-radius: 5px; margin-right: 2%;"/>
+        <br/>
+        <div class="row">
+            <div class="col-md-2" id="brojPutnika" style="font-weight: 700;">
+            </div>
+            <div class="col-md-6" id="pogodnosti" style="font-weight: 700;">
+            </div>
+            <div class="col-md-4" id="udaljenost" style="font-weight: 700;">
+            </div>
+        </div>
+        <hr style="border: 7px solid rgb(29, 126, 73); border-radius: 5px; margin-right: 2%;"/>
+        <br/>
+        <div class="row">
+            <h5 class="col-md-12" style="text-align: center; font-weight: 900;"  id="cijena">
+            </h5>
+        </div>
+    </div>
+
+<script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+<script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="javascript/firebase_config.js"></script>
+<script src="javascript/UpisivanjeKarti.js"></script> <!--prikaz kupljene karte s podacima-->
+</body>
+</html>

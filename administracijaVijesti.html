@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+    <title>Administracija</title>
+  </head>
+  <body onload="DohvacanjeTrenutnogId(); DodavanjeIdOgranicenje();" class="background-image">   <!--dohvacanje iz baze counterVijesti i counterVijestiOgranicenje-->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9CE7AE;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <!--navbar za sve stranice kojim admin upravlja za vijesti-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li>
+              <a class="nav-link" href="Prijava.html">Povratak</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="indexVijesti.html">Pregled vijesti</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="administracijaVijesti.html">Administracija</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="VijestiOgranicenja.html">Ograničenja</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!--tablica kojom se popune vijesti te opcije za brisanje ili uredivanje funkcije-->
+    <div>
+      <h1 class="display-3 text-center">Administracija vijesti</h1>
+      <div class="container">
+        <h4>Dodaj vijest <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#dodaj-vijest"><i class="fas fa-plus-square"></i></button></h4>
+        <table id="tablica-postovi" class="table table-hover">
+          <thead class="table-active">
+            <tr>
+              <th>R.br.</th>
+              <th>Datum objave</th>
+              <th>Naziv</th>
+              <th>Kategorija</th>
+              <th>Uredi</th>
+              <th>Obriši</th>
+            </tr>
+          </thead>
+          <tbody id="tijeloTabliceVijesti">
+          </tbody>
+        </table>
+
+        <!-- Modal dodaj vijest -->
+        <div class="modal fade" id="dodaj-vijest" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Dodaj vijest</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="inptNazivVijesti">Naziv vijesti</label>
+                  <input type="text" class="form-control" id="inptNazivVijesti">
+                </div>
+                <div class="form-group">
+                  <label for="txtTekstVijesti">Tekst vijesti</label>
+                  <textarea class="form-control" rows="5" id="txtTekstVijesti"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="inptSlikaVijesti">Slika vijesti</label>
+                  <input type="text" class="form-control" id="inptSlikaVijesti">
+                </div>
+                <div class="form-group">
+                  <label for="tvrtka">Tvrtka</label>
+                  <input type="radio" checked id="tvrtka" onclick="KategorijaTvrtka()" name="kategorija">
+                  <label for="tvrtka"> &#160;Putovanja</label>
+                  <input type="radio" id="putovanja" name="kategorija" onclick="KategorijaPutovanja()">
+                  <label for="tvrtka"> &#160;Izmjene</label>
+                  <input type="radio" id="izmjene" name="kategorija" onclick="KategorijaIzmjene()">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" onclick="ResetPodataka()">Resetiraj</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Odustani</button>
+                <button type="button" onclick="DodajVijest()" class="btn btn-outline-success">Dodaj</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal uredi vijest -->
+        <div class="modal fade" id="uredi-vijest" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Dodaj vijest</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="inptNazivVijesti">Naziv vijesti</label>
+                  <input type="text" class="form-control" id="inptEditNazivVijesti">
+                </div>
+                <div class="form-group">
+                  <label for="txtTekstVijesti">Tekst vijesti</label>
+                  <textarea class="form-control" rows="5" id="txtEditTekstVijesti"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="inptSlikaVijesti">Slika vijesti</label>
+                  <input type="text" class="form-control" id="inptEditSlikaVijesti">
+                </div>
+                <div class="form-group">
+                  <label for="tvrtka">Tvrtka</label>
+                  <input type="radio" id="tvrtkaUredi" onclick="KategorijaTvrtka()" name="kategorijaUredi">
+
+                  <label for="tvrtka"> &#160;Putovanja</label>
+                  <input type="radio" id="putovanjaUredi" name="kategorijaUredi" onclick="KategorijaPutovanja()">
+                  <label for="tvrtka"> &#160;Izmjene</label>
+                  <input type="radio" id="izmjeneUredi" name="kategorijaUredi" onclick="KategorijaIzmjene()">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" onclick="ResetPodatakaEdit()">Resetiraj</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Odustani</button>
+                <button id="btnUrediVijest" type="button" class="btn btn-outline-success">Ažuriraj</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+    <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="javascript/firebase_config.js"></script>
+    <script src="javascript/administracijaVijesti.js"></script>
+    <script>
+      $(document).ready(function(){  
+        $('#search').keyup(function(){  
+             search_table($(this).val());  
+        });  
+        function search_table(value){  
+             $('#tijeloTabliceVijesti tr').each(function(){  
+                  var found = 'false';  
+                  $(this).each(function(){  
+                       if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
+                       {  
+                            found = 'true';  
+                       }  
+                  });  
+                  if(found == 'true')  
+                  {  
+                       $(this).show();  
+                  }  
+                  else  
+                  {  
+                       $(this).hide();  
+                  }  
+             });  
+        }  
+      });</script>
+  </body>
+
+  <style>
+    *
+    {
+      margin: 0;
+      padding: 0;
+    }
+    .background-image{
+      background-size: cover;
+    }
+  </style>
+
+  </html>

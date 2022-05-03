@@ -1,0 +1,405 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <link rel="stylesheet" href="datePickerBootstrap/bootstrap-datepicker.standalone.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style-registration.css"/>  <!--Css za registracija.html-->
+  <title>Registracija</title>
+</head>
+<!--Uz style-registration css, ovdje elementi imaju linijske css kodove-->
+<!--Bootstrap početni dio, link za povratak, obaveze korisnika, naslov i slika-->
+<body>
+  <img style="position: absolute; right: 0; left: 0; bottom: 0; top: 0; margin: auto; z-index: -1;" src="img/userRegistration.png" alt="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2" style="margin-top: 4%; font-size: 20px;" id="slikaZaPovratak">
+        <div class="imageBox">
+          <div class="imageInn">
+            <a id="korakUnazad" href="Prijava.html"><img src="C:/wamp64/www/PIN-prijevoz/img/KorakUnazad.png" alt=""></a>
+          </div>
+          <div class="hoverImg">
+            <a href="Prijava.html"><img src="C:/wamp64/www/PIN-prijevoz/img/hoverKorakUnazad.png" alt=""></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" style="margin-top: 3%;">
+        <div class="accordion" id="accordionObveza">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="mb-0">
+                <button class="btn btn-warning btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" id="accordionObvezeKorisnika">
+                  Obaveze korisnika
+                </button>
+              </h2>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionObveza">
+              <div class="card-body">
+                <p>**<span style="color: rgb(179, 11, 11);">Molimo da popunite sva polja točno, bez lažnih izjava. Morate imati 18 godina kako biste se mogli registrirati</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h1 id='naslov'>Registracija korisnika</h1>
+      </div>
+    </div>
+  </div>
+
+  <!--Forma za registraciju korisnika. Koristi se bootstrap tablični prikaz osobnih podataka i podataka za prijavu-->
+  <form action="" class="formRegistracija">
+  <div class="container" style="margin-top: 5%;">
+    <div class="row">
+      <div class="col-md-8" class="formRegistracija">    
+        <h3 style="position: relative; text-align: center; margin-top: 20px; margin-right: 15%;">Osobni podaci</h3>
+        <label for="ime">Ime:</label>
+        <input required type="text" id="ime" name="ime" placeholder="Ime" style= "left: 100px; position: relative; width: 50%; padding: 5px; margin-bottom: 10px;"/>
+        <br/>
+        <label for="prezime">Prezime</label>
+        <input required type="text" id="prezime" name="prezime" placeholder="Prezime" style= "left: 73px; position: relative; width: 50%; padding: 5px; margin-bottom: 10px;"/>
+        <br/>
+        <label for="datumRodenja">Datum rođenja</label>
+        <input required type="text" id="datePickerId" name="datumRodenja" style= "left: 27px; position: relative; width: 50%; padding: 5px; margin-bottom: 10px;">
+        <br/>
+        <label for="adresa">Adresa(ulica, broj)</label>
+        <input required type="text" id="adresa" name="adresa" placeholder="Adresa(ulica, broj)" style= "left: 2px; position: relative; width: 50%; padding: 5px; margin-bottom: 10px;"/>
+        <br/>
+        <label for="postanskiBroj">Poštanski broj</label>
+        <input required type="text" maxlength="5" id="postanskiBroj" name="postanskiBroj" placeholder="Poštanski broj" style= "left: 31px; position: relative; width: 50%; padding: 5px; margin-bottom: 10px;"/>
+        <br/>
+        <label for="grad">Grad</label>
+        <input required type="text" id="grad" name="grad" placeholder="Grad" style= "left: 96px; position: relative; width: 50%; padding: 5px; margin-bottom: 10px;"/>
+        <br/>
+        <label for="brojMobitela">Broj mobitela</label>
+        <input type="tel" maxlength="10" required id="brojMobitela" name="brojMobitela" placeholder="Broj mobitela" style= "left: 38px; position: relative; width: 50%; padding: 5px; margin-bottom: 10px;"/>
+        <br/>
+        <label for="oib">OIB</label>
+        <input required type="tel" maxlength="11" id="oib" name="oib" placeholder="OIB" style= "left: 104px; position: relative; width: 50%; padding: 5px; margin-bottom: 10px;"/>
+        <br/></div>
+      <div class="col-md-4">
+        <h3 style="position: relative; text-align: center; margin-top: 20px;">Podaci za prijavu</h3>
+        <input type="text" id="email" name="email" placeholder="E-mail" style="width: 90%; padding: 5px; margin-bottom: 10px;"/>
+        <input type="password" id="password" name="password" placeholder="Lozinka" style="width: 90%; padding: 5px; margin-bottom: 10px;"/>
+        <input type="password" id="passwordPotvrda" name="passwordPotvrda" placeholder="Potvrdi lozinku" style="width: 90%; padding: 5px; margin-bottom: 10px;"/></div>
+      </div>
+      <!--Button registracija, bootstrap tablični prikaz-->
+      <div class="row">
+      <div class="col-md-12" class="formRegistracija">
+        <input type="button" id='login' name="login" value="Registracija"/>
+      </div>
+    </div>
+    </div>
+  </form>
+</body>
+
+<!--JavaScript je pisan u Registracija.html-u-->
+<!--Firebase config sa potrebnim dodacima za registraciju korisnika i njegovo upisivanje u bazu i firebase-authentication-->
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+  import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+  apiKey: "AIzaSyBbDM_m_ckmCwNsnZlAqo997g4_AqzqWjY",
+  authDomain: "registriranikorisnici.firebaseapp.com",
+  databaseURL: "https://registriranikorisnici-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "registriranikorisnici",
+  storageBucket: "registriranikorisnici.appspot.com",
+  messagingSenderId: "1070128720438",
+  appId: "1:1070128720438:web:66a3e7811d6317a72bc697"
+};
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  const auth = getAuth();
+  /*login.addEventListener('click',(e) => {
+
+  var email = document.getElementById('email').value;
+  var ime = document.getElementById('ime').value;
+  var prezime = document.getElementById('prezime').value;
+  var datumRodenja = document.getElementById('datePickerId').value;
+  var adresa = document.getElementById('adresa').value;
+  var postanskiBroj = document.getElementById('postanskiBroj').value;
+  var grad = document.getElementById('grad').value;
+  var brojMobitela = document.getElementById('brojMobitela').value;
+  var oib = document.getElementById('oib').value;
+  var password = document.getElementById('password').value;
+
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+     // Signed in 
+      const user = userCredential.user;
+
+      const dt = new Date();
+      set(ref(database, 'Registrirani/' + user.uid),{
+        email: email,
+        ime: ime,
+        prezime: prezime,
+        adresa: adresa,
+        postasnkiBroj: postanskiBroj,
+        grad: grad,
+        brojMobitela: brojMobitela,
+        oib: oib,
+        datumRodenja: datumRodenja,
+        last_login: dt,
+      })
+      alert('user created!');
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+
+      alert(errorMessage);
+    // ..
+    });
+
+});*/
+
+//U određenim formama samo će prvo slovo u prvoj riječi postaviti automatski veliko
+var capitalize = function(e){
+    // if the first letter is lowercase a-z
+    // ** don't run the replace unless required, to permit selecting of text **
+    if(this.value.match(/^[a-z]/)){
+        // replace the first letter
+        this.value = this.value.replace(/^./,function(letter){
+            // with the uppercase version
+            return letter.toUpperCase();
+        });
+    }
+}
+// listen to key up in case of typeing, or pasting via keyboard
+// listen to mouseup in case of pasting via mouse
+// prefer `up` events as the action is complete at that point
+document.getElementById('ime').addEventListener('keyup', capitalize);       //keyup - The key is released
+document.getElementById('ime').addEventListener('mouseup', capitalize);     //mouseup - kada je tipka miša nije pritisnuta
+document.getElementById('prezime').addEventListener('keyup', capitalize);
+document.getElementById('prezime').addEventListener('mouseup', capitalize);
+document.getElementById('adresa').addEventListener('keyup', capitalize);
+document.getElementById('adresa').addEventListener('mouseup', capitalize);
+document.getElementById('grad').addEventListener('keyup', capitalize);
+document.getElementById('grad').addEventListener('mouseup', capitalize);
+//keydown - The key is on its way down
+//keypress - The key is pressed down
+//keyup - The key is released
+
+//mouseup - kada je tipka miša nije pritisnuta
+//mousedown - kada je tipka miša pritisnuta
+
+// Restricts input for the set of matched elements to the given inputFilter function.
+// $.fn.inputFilter -> All objects have a prototype property. It is simply an object from which other objects can inherit properties. 
+//jQuery.fn.init.prototype = jQuery.fn;
+/*
+function Person(name) {
+  this.name = name;
+}
+Person.prototype.sayHello = function () {
+  alert(this.name + " says hello");
+};
+
+var james = new Person("James");
+james.sayHello(); // Alerts "James says hello"
+*/
+(function($) {
+  $.fn.inputFilter = function(inputFilter) {
+    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+    if (inputFilter(this.value)) {                          //Ako je test(value) vratio true
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;             
+      } else if (this.hasOwnProperty("oldValue")) {        //Ako je test(value) vratio false
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
+    });
+  };
+}(jQuery));
+
+//Ograničenje određenim formama da se unutar njih mogu samo brojevi upisivati
+//RegExp -> Regular expressions are patterns used to match character combinations in strings. In JavaScript, regular expressions are also objects
+//Funkcija vraća true ili false -> return test(value) i šalje ju funkciji iznad
+$(document).ready(function() {
+  $("#brojMobitela").inputFilter(function(value) {
+    return /^\d*$/.test(value);    // Allow digits only, using a RegExp
+  });                              // test(value) = test() -> Tests for a match in a string. It returns true or false.
+});
+$(document).ready(function() {
+  $("#oib").inputFilter(function(value) {
+    return /^\d*$/.test(value);    // Allow digits only, using a RegExp
+  });                              // test(value) = test() -> Tests for a match in a string. It returns true or false.
+});
+$(document).ready(function() {
+  $("#postanskiBroj").inputFilter(function(value) {
+    return /^\d*$/.test(value);    // Allow digits only, using a RegExp
+  });                              // test(value) = test() -> Tests for a match in a string. It returns true or false.
+}); 
+
+//Dodavanje zelene boje formi lozinka i potvrdi lozinku ako su jednake i ako imaju više od 5 znakova, inače crna boja. 
+passwordPotvrda.addEventListener('input', function() {
+  if(document.getElementById("passwordPotvrda").value == document.getElementById("password").value && document.getElementById("password").value.length > 5 && document.getElementById("passwordPotvrda").value.length > 5);
+  {
+    document.getElementById("passwordPotvrda").style.color = "green";
+    document.getElementById("password").style.color = "green";
+  }
+  if(document.getElementById("passwordPotvrda").value != document.getElementById("password").value || document.getElementById("password").value.length < 5 || document.getElementById("password").value.length < 5)
+  {
+    document.getElementById("passwordPotvrda").style.color = "black";
+    document.getElementById("password").style.color = "black";
+  }
+});
+
+//Klik na gumb registracija
+login.addEventListener('click',(e) => {
+  //Varijable koje će biti spremljene u bazu ako je uvjet zadovoljen
+  var email = document.getElementById('email').value;
+  var ime = document.getElementById('ime').value;
+  var prezime = document.getElementById('prezime').value;
+  var datumRodenja = document.getElementById('datePickerId').value;
+  var adresa = document.getElementById('adresa').value;
+  var postanskiBroj = document.getElementById('postanskiBroj').value;
+  var grad = document.getElementById('grad').value;
+  var brojMobitela = document.getElementById('brojMobitela').value;
+  var oib = document.getElementById('oib').value;
+  var passwordPotvrda = document.getElementById('passwordPotvrda').value;
+  var password = document.getElementById('password').value;
+  //Uvjet da sve forme moraju imati vrijednost te da lozinka i potvrda lozinke moraju imati jednake vrijednosti
+  if(document.getElementById('ime').value && document.getElementById('prezime').value && document.getElementById('datePickerId').value && document.getElementById('adresa').value && document.getElementById('postanskiBroj').value && document.getElementById('ime').value && document.getElementById('grad').value && document.getElementById('brojMobitela').value && document.getElementById('oib').value && oib.length >= 11 && document.getElementById('password').value == document.getElementById('passwordPotvrda').value)
+  {
+    //Firebase authentication za pravljenje korisnika s lozinkom i e-mailom.
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+     // Signed in 
+      const user = userCredential.user;
+      set(ref(database, 'Registrirani/' + user.uid),{
+        email: email,
+        ime: ime,
+        prezime: prezime,
+        adresa: adresa,
+        postasnkiBroj: postanskiBroj,
+        grad: grad,
+        brojMobitela: brojMobitela,
+        oib: oib,
+        datumRodenja: datumRodenja,
+        funkcija: 'korisnik',
+      })
+      window.open('C:/wamp64/www/PIN-prijevoz/Prijava.html');
+    })
+    //Hvatanje pogreški
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      Swal.fire({
+      icon: 'error',
+      title: "Pogreška",
+      text: errorMessage,
+    });
+    });
+  }
+  else
+  {
+    Swal.fire({
+      icon: 'error',
+      title: "Pogreška",
+      text: 'Niste unjeli sve vrijednosti ispravno',
+    });
+  }
+});
+
+
+//Date picker
+$('#datePickerId').datepicker(
+    {
+      format: 'dd/mm/yyyy',
+      endDate: '-18y',
+      language: 'hr'
+    }
+);
+
+//Dodavanje formi datum rođenja minimalni datum tako da bi se ispunio uvjet punoljetnosti registriranog korisnika.
+var punoljetneGodine = new Date();
+punoljetneGodine.setFullYear(punoljetneGodine.getFullYear() - 18);
+datePickerId.max = punoljetneGodine.toISOString().split("T")[0];
+
+ /*login.addEventListener('click',(e)=>{
+   var email = document.getElementById('email').value;
+   var ime = document.getElementById('ime').value;
+   var prezime = document.getElementById('prezime').value;
+   var datumRodenja = document.getElementById('datePickerId').value;
+   var adresa = document.getElementById('adresa').value;
+   var postanskiBroj = document.getElementById('postanskiBroj').value;
+   var grad = document.getElementById('grad').value;
+   var brojMobitela = document.getElementById('brojMobitela').value;
+   var oib = document.getElementById('oib').value;
+   var password = document.getElementById('password').value;
+
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+
+        const dt = new Date();
+         update(ref(database, 'users/' + user.uid),{
+          email: email,
+          ime: ime,
+          prezime: prezime,
+          adresa: adresa,
+          postasnkiBroj: postanskiBroj,
+          grad: grad,
+          brojMobitela: brojMobitela,
+          oib: oib,
+          datumRodenja: datumRodenja,
+          last_login: dt,
+        })
+
+         alert('User loged in!');
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        alert(errorMessage);
+  });
+ });*/
+
+const user = auth.currentUser;
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+  } else {
+    // User is signed out
+  }
+});
+
+/*logout.addEventListener('click',(e)=>{
+
+   signOut(auth).then(() => {
+     // Sign-out successful.
+     alert('user loged out');
+   }).catch((error) => {
+     // An error happened.
+     const errorCode = error.code;
+     const errorMessage = error.message;
+
+        alert(errorMessage);
+   });
+});*/
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+<script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+<script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+<script src="datePickerJS/bootstrap-datepicker.min.js"></script>
+<script src="locales/bootstrap-datepicker.hr.min.js"></script> <!--potrebno uključiti-->
+</html>
